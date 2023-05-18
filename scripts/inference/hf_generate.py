@@ -165,6 +165,7 @@ def main(args: Namespace) -> None:
         'use_auth_token': args.use_auth_token,
         'trust_remote_code': args.trust_remote_code,
         'revision': args.revision,
+        'low_cpu_mem_usage': True
     }
     try:
         config = AutoConfig.from_pretrained(args.name_or_path,

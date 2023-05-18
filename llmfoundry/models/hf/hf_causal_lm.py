@@ -47,6 +47,7 @@ class ComposerHFCausalLM(HuggingFaceModelWithZLoss):
             om_model_config.pretrained_model_name_or_path,
             trust_remote_code=om_model_config.get('trust_remote_code', True),
             use_auth_token=om_model_config.get('use_auth_token', False),
+            low_cpu_mem_usage=True
         )
 
         # set config overrides
@@ -90,7 +91,9 @@ class ComposerHFCausalLM(HuggingFaceModelWithZLoss):
                     trust_remote_code=om_model_config.get(
                         'trust_remote_code', True),
                     use_auth_token=om_model_config.get('use_auth_token', False),
-                    config=config)
+                    config=config,
+                    low_cpu_mem_usage=True
+                )
             else:
                 model = AutoModelForCausalLM.from_config(config)
         elif init_device == 'meta':
